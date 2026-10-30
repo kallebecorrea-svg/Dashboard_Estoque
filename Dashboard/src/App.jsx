@@ -5,6 +5,8 @@ import StatCard from "./components/StatCard";
 import ProductTable from "./components/ProductTable";
 import Atividades from "./components/Atividade";
 import Manutencao from "./components/Manutencao";
+import GraficoLinha from "./components/GraficoLinha";
+import GraficoRosca from "./components/GraficoRosca";
 import "./App.css";
 
 
@@ -45,8 +47,8 @@ export default function App() {
               </section>
 
               <section className="graficos">
-                <div className="painel">Gráfico de linha (Passo 9)</div>
-                <div className="painel">Gráfico de rosca (Passo 9)</div>
+                <GraficoLinha />
+                <GraficoRosca />
               </section>
 
               <section className="inferior">
