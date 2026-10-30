@@ -1,16 +1,47 @@
-# React + Vite
+# FlowStock — Dashboard de Estoque
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+O FlowStock é uma interface web de gestão de estoque que reúne, em um só lugar, indicadores e informações sobre produtos. O dashboard foi pensado para ajudar a acompanhar os níveis de estoque e consultar rapidamente os dados mais importantes da operação.
 
-Currently, two official plugins are available:
+## Sobre o projeto
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+A tela inicial apresenta cartões com indicadores de produtos, itens com estoque baixo, valor total e fornecedores. Também inclui uma área reservada para gráficos, uma lista de atividades recentes e uma tabela de produtos com categoria, quantidade e situação do estoque.
 
-## React Compiler
+O menu lateral permite navegar entre as seções Dashboard, Produtos, Estoque, Fornecedores, Movimentações e Configurações. No momento, somente o Dashboard está implementado; as demais opções exibem uma mensagem de que estão em desenvolvimento.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Este projeto é uma demonstração de interface: os indicadores e produtos exibidos estão definidos no próprio código, sem integração com banco de dados ou serviço de backend.
 
-## Expanding the ESLint configuration
+## Tecnologias
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React 19
+- Vite 8
+- Recharts
+- JavaScript e CSS
+- ESLint
+
+## Como executar
+
+É necessário ter o Node.js e o npm instalados.
+
+No terminal, acesse a pasta `Dashboard` e instale as dependências:
+
+```bash
+npm install
+```
+
+Inicie o servidor de desenvolvimento:
+
+```bash
+npm run dev
+```
+
+O Vite exibirá no terminal o endereço local para abrir no navegador. Para gerar uma versão de produção, execute:
+
+```bash
+npm run build
+```
+
+Para verificar o código com o ESLint:
+
+```bash
+npm run lint
+```
