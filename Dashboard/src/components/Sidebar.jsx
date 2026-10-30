@@ -1,17 +1,13 @@
-import { useState } from "react";
-
 const menuPrincipal = ["Dashboard", "Produtos", "Estoque", "Fornecedores", "Movimentações"];
 const configuracoes = ["Sistema", "Usuários"];
 
-function Sidebar() {
-    const [ativo, setAtivo] = useState("Estoque");
-
+function Sidebar({ ativo, onSelecionar }) {
     function renderItem(nome) {
         return (
             <li
                 key={nome}
                 className={ativo === nome ? "menu-item ativo" : "menu-item"}
-                onClick={() => setAtivo(nome)}
+                onClick={() => onSelecionar(nome)}
             >
                 {nome}
             </li>
@@ -38,4 +34,5 @@ function Sidebar() {
         </aside>
     );
 }
-export default Sidebar
+
+export default Sidebar;

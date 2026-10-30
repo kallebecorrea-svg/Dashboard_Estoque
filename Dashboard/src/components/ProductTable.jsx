@@ -1,6 +1,6 @@
 import StatusBadge from "./StatusBadge";
 
-function corBarra(quantidade) {
+function corDaBarra(quantidade) {
     if (quantidade < 10) return "barra-critica";
     if (quantidade < 20) return "barra-atencao";
     return "barra-estavel"
@@ -35,7 +35,7 @@ function ProductTable({ produtos }) {
                             <td>{p.codigo}</td>
                             <td>{p.categoria}</td>
                             <td>
-                                <span className="qtd">{p.quantidade} unidade</span>
+                                <span className="qtd">{p.quantidade} unidades</span>
                                 <div className="barra-fundo">
                                     <div
                                         className={`barra ${corDaBarra(p.quantidade)}`}
@@ -54,4 +54,4 @@ function ProductTable({ produtos }) {
     )
 }
 
-export default ProductTable
+export default ProductTable;

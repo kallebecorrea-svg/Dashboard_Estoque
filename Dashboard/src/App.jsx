@@ -1,20 +1,21 @@
+import { useState } from "react";
 import Sidebar from "./components/Sidebar";
 import Header from "./components/Header";
 import StatCard from "./components/StatCard";
 import ProductTable from "./components/ProductTable";
 import Atividades from "./components/Atividade";
+import Manutencao from "./components/Manutencao";
 import "./App.css";
 
 
 const produtos = [
-  { id: 1, nome: "Teclado Mecânico", categoria: "Periféricos", quantidade: "45" },
-  { id: 2, nome: "Monitor 24\"", categoria: "Monitores", quantidade: "20" },
-  { id: 3, nome: "Mouse Gamer", categoria: "Periféricos", quantidade: "10" },
-  { id: 4, nome: "Cabo HDMI", categoria: "Acessórios", quantidade: "5" },
-  { id: 5, nome: "Notebook ThinkPad i5", categoria: "Computadores", quantidade: "12" },
-  { id: 6, nome: "Webcam Full HD", categoria: "Periféricos", quantidade: "8" },
-
-]
+  { id: 1, nome: "Fone de Ouvido Bluetooth", sku: "1234", codigo: "PRD-001", categoria: "Eletrônicos", quantidade: 48, maximo: 60 },
+  { id: 2, nome: "Smartwatch", sku: "5678", codigo: "PRD-002", categoria: "Eletrônicos", quantidade: 5, maximo: 60 },
+  { id: 3, nome: "Câmera Digital", sku: "9012", codigo: "PRD-003", categoria: "Eletrônicos", quantidade: 12, maximo: 60 },
+  { id: 4, nome: "Perfume", sku: "3450", codigo: "PRD-004", categoria: "Beleza", quantidade: 32, maximo: 60 },
+  { id: 5, nome: "Teclado Mecânico", sku: "7788", codigo: "PRD-005", categoria: "Eletrônicos", quantidade: 45, maximo: 60 },
+  { id: 6, nome: "Hidratante", sku: "4421", codigo: "PRD-006", categoria: "Beleza", quantidade: 3, maximo: 60 },
+];
 
 const cards = [
   { id: 1, titulo: "Total Produtos", valor: "1.248", variacao: "12,5% vs último mês", positivo: true, icone: "📦", cor: "azul" },
@@ -24,29 +25,38 @@ const cards = [
 ]
 
 export default function App() {
+  const [paginaAtiva, setPaginaAtiva] = useState("Dashboard");
+  const emDashboard = paginaAtiva === "Dashboard";
+
   return (
     <div className="layout">
-      <Sidebar />
+      <Sidebar ativo={paginaAtiva} onSelecionar={setPaginaAtiva} />
 
       <div className="principal">
-        <Header />
+        <Header titulo={emDashboard ? "Dashboard Overview" : paginaAtiva} />
 
         <main className="conteudo">
-          <section className="cards">
-            {cards.map((c) => (
-              <StatCard key={c.id} {...c} />
-            ))}
-          </section>
+          {emDashboard ? (
+            <>
+              <section className="cards">
+                {cards.map((c) => (
+                  <StatCard key={c.id} {...c} />
+                ))}
+              </section>
 
-          <section className="graficos">
-            <div className="painel">Gráfico de linha (Passo 9)</div>
-            <div className="painel">Gráfico de rosca (Passo 9)</div>
-          </section>
+              <section className="graficos">
+                <div className="painel">Gráfico de linha (Passo 9)</div>
+                <div className="painel">Gráfico de rosca (Passo 9)</div>
+              </section>
 
-          <section className="inferior">
-            <Atividades />
-            <ProductTable produtos={produtos} />
-          </section>
+              <section className="inferior">
+                <Atividades />
+                <ProductTable produtos={produtos} />
+              </section>
+            </>
+          ) : (
+            <Manutencao pagina={paginaAtiva} />
+          )}
         </main>
       </div>
     </div>

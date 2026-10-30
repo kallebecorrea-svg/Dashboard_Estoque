@@ -153,3 +153,16 @@ small { display: block; color: #9ca3af; font-size: 11px; }
 .badge-estavel { background: #dcfce7; color: #166534; }
 .badge-atencao { background: #fef3c7; color: #b45309; }
 .badge-critico { background: #fee2e2; color: #b91c1c; }
+
+/* ---------- MANUTENÇÃO ---------- */
+.manutencao {
+  text-align: center;
+  padding: 80px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.manutencao-icone { font-size: 56px; }
+.manutencao h2 { font-size: 20px; margin-bottom: 0; }
+.manutencao p { color: #6b7280; }
