@@ -75,7 +75,7 @@ function PaginaProdutos({ produtos, setProdutos }) {
  
       <section className="painel">
         <TabelaProdutos
-          produtos={produtosDaPagina}
+          produtos={produtosPagina}
           onEditar={setFormAberto}
           onExcluir={excluir}
         />
@@ -83,7 +83,7 @@ function PaginaProdutos({ produtos, setProdutos }) {
         <nav className="paginacao">
           <button disabled={paginaAtual === 1} onClick={() => setPagina(paginaAtual - 1)}>‹</button>
  
-          {numerosDePagina.map((n) => (
+          {numerosDePaginas.map((n) => (
             <button
               key={n}
               className={n === paginaAtual ? "pag-ativa" : ""}
