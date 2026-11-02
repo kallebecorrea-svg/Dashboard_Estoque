@@ -7,6 +7,8 @@ import Atividades from "./components/Atividade";
 import Manutencao from "./components/Manutencao";
 import GraficoLinha from "./components/GraficoLinha";
 import GraficoRosca from "./components/GraficoRosca";
+import PaginaProdutos from "./components/Paginaprodutos";
+import { catalogoInicial } from "./components/catalogo";
 import "./App.css";
 
 
@@ -28,38 +30,47 @@ const cards = [
 
 export default function App() {
   const [paginaAtiva, setPaginaAtiva] = useState("Dashboard");
-  const emDashboard = paginaAtiva === "Dashboard";
+  // o catálogo fica aqui no App para não se perder ao trocar de aba
+  const [catalogo, setCatalogo] = useState(catalogoInicial);
+
+  function renderPagina() {
+    if (paginaAtiva === "Dashboard") {
+      return (
+        <>
+          <section className="cards">
+            {cards.map((c) => (
+              <StatCard key={c.id} {...c} />
+            ))}
+          </section>
+
+          <section className="graficos">
+            <GraficoLinha />
+            <GraficoRosca />
+          </section>
+
+          <section className="inferior">
+            <Atividades />
+            <ProductTable produtos={produtos} />
+          </section>
+        </>
+      );
+    }
+
+    if (paginaAtiva === "Produtos") {
+      return <PaginaProdutos produtos={catalogo} setProdutos={setCatalogo} />;
+    }
+
+    return <Manutencao pagina={paginaAtiva} />;
+  }
 
   return (
     <div className="layout">
       <Sidebar ativo={paginaAtiva} onSelecionar={setPaginaAtiva} />
 
       <div className="principal">
-        <Header titulo={emDashboard ? "Dashboard Overview" : paginaAtiva} />
+        <Header titulo={paginaAtiva === "Dashboard" ? "Dashboard Overview" : paginaAtiva} />
 
-        <main className="conteudo">
-          {emDashboard ? (
-            <>
-              <section className="cards">
-                {cards.map((c) => (
-                  <StatCard key={c.id} {...c} />
-                ))}
-              </section>
-
-              <section className="graficos">
-                <GraficoLinha />
-                <GraficoRosca />
-              </section>
-
-              <section className="inferior">
-                <Atividades />
-                <ProductTable produtos={produtos} />
-              </section>
-            </>
-          ) : (
-            <Manutencao pagina={paginaAtiva} />
-          )}
-        </main>
+        <main className="conteudo">{renderPagina()}</main>
       </div>
     </div>
   );

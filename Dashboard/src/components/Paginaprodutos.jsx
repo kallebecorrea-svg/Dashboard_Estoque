@@ -1,7 +1,7 @@
 import { useState } from "react";
 import StatCard from "./StatCard";
-import TabelaProdutos from "./TabelaProdutos";
-import FormProduto from "./FormProduto";
+import TabelaProdutos from "./Tabelaprodutos";
+import FormProduto from "./Formprodutos";
 
 const ITENS_POR_PAGINA = 8;
 
@@ -75,7 +75,7 @@ function PaginaProdutos({ produtos, setProdutos }) {
  
       <section className="painel">
         <TabelaProdutos
-          produtos={produtosDaPagina}
+          produtos={produtosPagina}
           onEditar={setFormAberto}
           onExcluir={excluir}
         />
@@ -83,7 +83,7 @@ function PaginaProdutos({ produtos, setProdutos }) {
         <nav className="paginacao">
           <button disabled={paginaAtual === 1} onClick={() => setPagina(paginaAtual - 1)}>‹</button>
  
-          {numerosDePagina.map((n) => (
+          {numerosDePaginas.map((n) => (
             <button
               key={n}
               className={n === paginaAtual ? "pag-ativa" : ""}
