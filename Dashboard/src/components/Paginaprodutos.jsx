@@ -1,7 +1,7 @@
 import { useState } from "react";
 import StatCard from "./StatCard";
-import TabelaProdutos from "./TabelaProdutos";
-import FormProduto from "./FormProduto";
+import TabelaProdutos from "./Tabelaprodutos";
+import FormProduto from "./Formprodutos";
 
 const ITENS_POR_PAGINA = 8;
 
